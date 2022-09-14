@@ -6,7 +6,7 @@ A command line script to print wirelessly in the Oden Intitute at UT Austin from
 ## How to set up
 
 - place the contents of `oden_print.sh` in your `.bashrc` or `.profile` file
-- in the copied text, replace `<username@machine>` with your sysnet username and machine (for example `jsmith@bernoulli.oden.utexas.edu`), `<default printer>` with your default printer's name if desired
+- in the copied text, replace `<username@machine>` with your sysnet username and machine (for example `jsmith@bernoulli.oden.utexas.edu`), replace `<default printer>` with your default printer's name if desired
 - re-`source` the file you just edited or start a new terminal session
 - **make sure your personal workstation is always on** (it should be anyway, but the script won't work if it's off)
 
@@ -18,7 +18,7 @@ A command line script to print wirelessly in the Oden Intitute at UT Austin from
 - `oden_print -d` : list default printer
 - `oden_print -m` : list machine used for ssh
 - `oden_print printer_name file_to_print` : prints `file_to_print` on printer `printer_name`
-- `oden_print -# N printer_name file_to_print` : prints N copies of `file_to_print` on printer `printer_name`
+- `oden_print -# N printer_name file_to_print` : prints `N` copies of `file_to_print` on printer `printer_name`
 
 Calling without specifying a printer will print on the default printer set in the body of the function. 
 
