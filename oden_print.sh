@@ -1,4 +1,4 @@
-unction oden_print {
+function oden_print {
     # print to an Oden printer wirelessly via SSH to workstation
     # first argument: printer name
     # other arguments: files to be printed 
