@@ -9,7 +9,7 @@ function oden_print {
         case ${1} in 
 	        -h | --help)     
         	    echo ''
-        	    echo 'usage: oden_print [options] <files to print>'
+        	    echo 'usage: oden_print [options] files'
         	    echo 'If no printer or machine is specified, then the defaults are used'
 		        echo 'flags: -h / --help,     help'
         	    echo '       -d / --defaults, list default printer and machine'
@@ -72,7 +72,7 @@ function oden_print {
     # positional argument (file to print), so using for loop for now.
     # Could perhaps use scp and tar to place these files in the
     # remote /tmp directory to avoid multiple credentials checks.
-    for file in ${pos_args}; do
+    for file in $(echo ${pos_args}); do
         ssh ${machine} lpr -P ${printer} ${through} < ${file}
     done
 }
