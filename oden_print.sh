@@ -4,7 +4,7 @@ function oden_print {
     printer=default_printer                    # users hardcode here (optional)
 
     pos_args=    # positional arguments string
-    through=     # flags and options to be passed directly to lpr
+    through=     # flags and options to be passed through directly to lpr
     while [ ${#} -gt 0 ]; do
         case ${1} in 
 	        -h | --help)     
@@ -14,7 +14,8 @@ function oden_print {
 		        echo 'flags: -h / --help,     help'
         	    echo '       -d / --defaults, list default printer and machine'
         	    echo '       -l / --list,     list available printer names'
-		        echo '	     -m / --machine,  specify machine/workstation for ssh' 
+		        echo '       -m / --machine,  specify machine/workstation for ssh' 
+		        echo '       -p / --printer,  specify printer' 
                 echo '       -t / --through,  flags and options to be passed through to lpr'
                 echo ''
                 echo 'Example: use machine mandelbrot to print foo.pdf on cp3se'
@@ -65,7 +66,7 @@ function oden_print {
         return 1
     fi
 
-    # Both:
+    # Both of:
     #   [usual commands] <(cat ${pos_args})
     #   cat ${pos_args} | [usual commands]
     # result in only one file being printed if there is more than one
