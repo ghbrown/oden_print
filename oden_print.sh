@@ -24,7 +24,7 @@ function oden_print {
         	    echo ''
                 return 0
     	        ;; 
-            -d | --show-defaults)
+            -d | --defaults)
                 echo ''
                 echo "default printer is:             ${printer}"
                 echo "default machine/workstation is: ${machine}"
@@ -74,7 +74,8 @@ function oden_print {
     # Could perhaps use scp and tar to place these files in the
     # remote /tmp directory to avoid multiple credentials checks.
     for file in $(echo ${pos_args}); do
-        ssh ${machine} lpr -P ${printer} ${through} < ${file}
+        # fit-to-page prevents (configurationerror ... setpagedevice)
+        ssh ${machine} lpr -P ${printer} -o fit-to-page ${through} < ${file}
     done
 }
 
