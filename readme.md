@@ -2,15 +2,18 @@
 
 A command line script to print wirelessly in the Oden Intitute at UT Austin from Linux, Mac, or Windows (if you're running Windows Subsystem for Linux).
 
+
 ## Set up
 
 Clone this repository, then place the contents of `oden_print.sh` in your `.bashrc` or `.profile` file and re-`source` that file or start a new terminal session.
 
-**Make sure your personal workstation is always on** (it should be anyway, but the script won't work if it's off).
+### Recommended
+Avoid the need to specify a workstation and printer for every print by:
+- replacing `username@machine.oden.utexas.edu` with your sysnet username and machine (for example `jsmith@bernoulli.oden.utexas.edu`)
+- replacing `default_printer` with your default printer's name (for example `cp3se`)
 
-**Recommended**: This will ensure you don't have to specify a workstation and printer for every print:
-- in the copied text, replace `username@machine.oden.utexas.edu` with your sysnet username and machine (for example `jsmith@bernoulli.oden.utexas.edu`)
-- in the copied text, replace `default_printer` with your default printer's name
+Avoid the need to enter your remote user password for SSH by setting up an
+[SSH keypair](https://www.oden.utexas.edu/sysdocs/ssh/index.html).
 
 
 ## How to use
@@ -23,20 +26,15 @@ oden_print -m username@machine.oden.utexas.edu -p cp3se file.pdf
 oden_print file.pdf
 ```
 
-To get a list of available printers and their name use `oden_print -l`.
-
 Use `oden_print -h` for a full help message.
 
 
 ## How it works
 
-It tunnels into your workstation via SSH and runs a print command on a file that gets forwarded over SSH.
-It's basically a one-liner (with some wrappings for convenience and usability).
+The script sends files and print commands to an Oden workstation over a multiplexed SSH connection.
+Multiplexing allows you to authenaticate once, even if you don't have a keypair.
 
 
 ## Miscellaneous
-
-Without any SSH configurations, you'll have to enter your remote machine password for every file you print.
-To avoid this, [set up an SSH keypair](https://www.oden.utexas.edu/sysdocs/ssh/index.html).
 
 **If you have any trouble with the script or have any improvements let me know.**
