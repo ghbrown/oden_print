@@ -75,6 +75,7 @@ function oden_print {
     ssh -f -N -o ControlMaster=auto -o ControlPath=${mux_control_path} -o ControlPersist=60s ${machine}
     echo "  set up connection"
     ## move files to temporary location on remote
+    ssh -o ControlPath=${mux_control_path} ${machine} mkdir -p ${remote_dir}
     scp -o ControlPath=${mux_control_path} "${pos_args[@]}" "${machine}:${remote_dir}" \
         1> /dev/null
     echo "  copied files to remote"
