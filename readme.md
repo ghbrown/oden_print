@@ -28,6 +28,46 @@ oden_print file.pdf
 
 Use `oden_print -h` for a full help message.
 
+### Frequently used printing options
+
+To specify printing options supported by `lpr`, make use of the `-t` flag, followed by a string of options surrounded by quotation marks. Note that a `-o` is needed before each option.
+
+```
+# Passing lpr options through oden_print
+oden_print -t "-o <option1> -o <option2> ..." file.pdf 
+```
+
+Check out this [official CUPS documentation](https://www.cups.org/doc/options.html) page for a complete list of standard printing options. The options are listed at the bottom of the page. Here, we list a couple of options that are frequently used by many users.
+
+#### Paper size
+
+Some older printers in POB do not play well with files using non-US-standard paper sizes (e.g. A4), likely due to mismatching between what the printer paper tray is set to and the size specified by the document. The `media` option thus comes in handy to ensure the printer used can handle the file smoothly. For a complete list of available media types, see the CUPS document linked above. For most common purposes, use `Letter`.
+
+```
+# Using Letter sized paper
+oden_print -t "-o media=Letter" file.pdf 
+```
+
+#### Print orientation
+
+To print the document in landscape orientation, add `-o landscape` to the passthrough string. The default behavior is to print in portrait orientation.
+```
+# Printing in landscape
+oden_print -t "-o landscape" file.pdf
+```
+
+#### Double-sided printing
+
+To print a document on both sides of the paper, add `-o sides=<side-options>` to the passthrough string. Available options are
+
+- `two-sided-long-edge` for portrait orientation,
+- `two-sided-short-edge` for landscape orientation,
+- `one-sided` if not specified.
+
+```
+# Printing on both sides in portrait
+oden_print -t "-o sides=two-sided-long-edge" file.pdf
+```
 
 ## How it works
 
