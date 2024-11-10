@@ -37,11 +37,11 @@ To specify printing options supported by `lpr`, make use of the `-t` flag, follo
 oden_print -t "-o <option1> -o <option2> ..." file.pdf 
 ```
 
-Check out this [official CUPS documentation](https://www.cups.org/doc/options.html) page for a complete list of standard printing options. The options are listed at the bottom of the page. Here, we list a couple of options that are frequently used by many users.
+Please see the `man` page of `lpr` for documentation on available printing options. Alternatively, check out the [official CUPS documentation](https://www.cups.org/doc/options.html). The options are listed at the bottom of the page. Here we review some of the most common options.
 
 #### Paper size
 
-Some older printers in POB do not play well with files using non-US-standard paper sizes (e.g. A4), likely due to mismatching between what the printer paper tray is set to and the size specified by the document. The `media` option thus comes in handy to ensure the printer used can handle the file smoothly. For a complete list of available media types, see the CUPS document linked above. For most common purposes, use `Letter`.
+Some older printers in POB do not play well with files using non-US-standard paper sizes (e.g. A4), likely due to mismatching between what the printer paper tray is set to and the size specified by the document. The `media` option thus comes in handy to ensure the printer used can handle the file smoothly. For a complete list of available media types, see the `man` page of `lpr` or the CUPS documentation linked above. For most purposes, use `Letter`.
 
 ```
 # Using Letter sized paper
@@ -60,9 +60,9 @@ oden_print -t "-o landscape" file.pdf
 
 To print a document on both sides of the paper, add `-o sides=<side-options>` to the passthrough string. Available options are
 
-- `two-sided-long-edge` for portrait orientation,
-- `two-sided-short-edge` for landscape orientation,
-- `one-sided` if not specified.
+- `two-sided-long-edge` for double-sided printing in portrait orientation,
+- `two-sided-short-edge` for double-sided printing in landscape orientation,
+- `one-sided` for single-sided printing.
 
 ```
 # Printing on both sides in portrait
