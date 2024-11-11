@@ -18,6 +18,7 @@ function oden_print {
 		        echo '       -m / --machine,  specify machine/workstation for ssh'
 		        echo '       -p / --printer,  specify printer'
                 echo '       -t / --through,  flags and options to be passed through to lpr'
+                echo '                        see the man page of lpr for documentation'
                 echo ''
                 echo 'Example: use machine mandelbrot to print foo.pdf on cp3se'
                 echo '         (two copies, single sided):'
