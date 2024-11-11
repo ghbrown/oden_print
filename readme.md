@@ -18,7 +18,7 @@ Avoid the need to enter your remote user password for SSH by setting up an
 
 ## How to use
 
-Typical usage for users who have done minimal and maximal set-ups are
+Typical usages for users who have done minimal and maximal setup are
 ```bash
 # minimal
 oden_print -m username@machine.oden.utexas.edu -p cp3se file.pdf
