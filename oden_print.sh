@@ -1,7 +1,9 @@
 function oden_print {
     # print to an Oden printer wirelessly via SSH to workstation
-    machine=username@machine.oden.utexas.edu   # users hardcode here (optional)
-    printer=default_printer                    # users hardcode here (optional)
+
+    # prefer user-define variables, but default to dummy arguments if not set
+    machine=${ODEN_PRINT_MACHINE-username@machine.oden.utexas.edu}
+    printer=${ODEN_PRINT_PRINTER-default_printer}
 
     pos_args=()  # positional arguments array
     through=     # flags and options to be passed through directly to lpr

@@ -5,22 +5,27 @@ A command line script to print wirelessly in the Oden Institute at UT Austin fro
 
 ## Set up
 
-Clone this repository, then place the contents of `oden_print.sh` in your `.bashrc` or `.profile` file and re-`source` that file or start a new terminal session.
+Clone this repository then add the following lines to your `.bashrc` or `.profile` file
 
-### Recommended
-Avoid the need to specify a workstation and printer for every print by:
-- replacing `username@machine.oden.utexas.edu` with your Sysnet username and machine (for example `jsmith@bernoulli.oden.utexas.edu`)
-- replacing `default_printer` with your default printer's name (for example `cp3se`)
+```
+ODEN_PRINT_MACHINE=<your username and machine, e.g jsmith@bernoulli.oden.utexas.edu>
+ODEN_PRINT_PRINTER=<your preferred printer, e.g. cp3se; use -l flag for full list>
+source /path/to/oden_print.sh
+```
 
-Avoid the need to enter your remote user password for SSH by setting up an
-[SSH keypair](https://www.oden.utexas.edu/sysdocs/ssh/index.html).
+This defines variables used by the script and then loads the script when your terminal starts.
+Now re-`source` the file or start a new terminal session.
+
+It is also recommended to setup an
+[SSH keypair](https://www.oden.utexas.edu/sysdocs/ssh/index.html)
+to avoid having to enter your remote user password.
 
 
 ## How to use
 
 Typical usages for users who have done minimal and maximal setup are
 ```bash
-# minimal
+# minimal, not even machine and printer are set
 oden_print -m username@machine.oden.utexas.edu -p cp3se file.pdf
 # maximal
 oden_print file.pdf
@@ -30,7 +35,10 @@ Use `oden_print -h` for a full help message.
 
 ### Frequently used printing options
 
-To specify printing options supported by `lpr`, make use of the `-t` flag, followed by a string of options surrounded by quotation marks. Note that a `-o` is needed before each option.
+To get help of course use `oden_print -h`, and to get a list of available printers use `oden_print -l`.
+
+To specify printing options supported by `lpr` use the `-t` flag followed by a string of options surrounded by quotation marks.
+Note that a `-o` is needed before each option.
 
 ```
 # Passing lpr options through oden_print
